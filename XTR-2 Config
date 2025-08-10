@@ -1,0 +1,22 @@
+hostname XTR-2
+!
+username admin privilege 15 password versa123
+!
+interface Loopback0
+ ip address 2.2.2.2 255.255.255.255
+ ip ospf 1 area 0
+!
+interface GigabitEthernet2
+ ip address 11.11.22.2 255.255.255.0
+ ip ospf 1 area 0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+router ospf 1
+ router-id 2.2.2.2
+!
+line vty 0 4
+ login local
+ transport input ssh
+!
